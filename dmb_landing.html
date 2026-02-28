@@ -1,0 +1,1491 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DMB Consulting — Consultoría Comercial Inmobiliaria</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --navy: #001F3F;
+  --navy-light: #0A2A4A;
+  --navy-dark: #001229;
+  --gold: #C9A96E;
+  --gold-light: #D4B87A;
+  --gold-muted: rgba(201, 169, 110, 0.15);
+  --cream: #F8F6F1;
+  --white: #FFFFFF;
+  --gray-100: #F5F5F5;
+  --gray-200: #E8E8E8;
+  --gray-300: #D9D9D9;
+  --gray-500: #8A8A8A;
+  --gray-700: #4A4A4A;
+  --text-dark: #1A1A1A;
+}
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  color: var(--text-dark);
+  background: var(--white);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ═══════════════ NAVIGATION ═══════════════ */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  background: rgba(0, 31, 63, 0.97);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(201, 169, 110, 0.15);
+  transition: all 0.4s ease;
+}
+
+nav.scrolled {
+  background: rgba(0, 31, 63, 0.99);
+  box-shadow: 0 4px 30px rgba(0,0,0,0.2);
+}
+
+.nav-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+}
+
+.nav-logo-icon {
+  width: 38px;
+  height: 38px;
+}
+
+.nav-logo-text {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: 3px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  list-style: none;
+}
+
+.nav-links a {
+  color: rgba(255,255,255,0.75);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  transition: color 0.3s;
+  position: relative;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--gold);
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover { color: var(--white); }
+.nav-links a:hover::after { width: 100%; }
+
+.nav-cta {
+  background: transparent !important;
+  border: 1px solid var(--gold) !important;
+  color: var(--gold) !important;
+  padding: 10px 24px !important;
+  font-size: 12px !important;
+  letter-spacing: 2px !important;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease !important;
+}
+
+.nav-cta:hover {
+  background: var(--gold) !important;
+  color: var(--navy) !important;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.hamburger span {
+  width: 24px;
+  height: 1.5px;
+  background: var(--white);
+  transition: all 0.3s;
+}
+
+/* ═══════════════ HERO ═══════════════ */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  background: var(--navy);
+  overflow: hidden;
+}
+
+.hero-bg-pattern {
+  position: absolute;
+  inset: 0;
+  opacity: 0.04;
+  background-image: 
+    linear-gradient(30deg, transparent 48%, rgba(201,169,110,0.3) 49%, rgba(201,169,110,0.3) 51%, transparent 52%),
+    linear-gradient(-30deg, transparent 48%, rgba(201,169,110,0.3) 49%, rgba(201,169,110,0.3) 51%, transparent 52%);
+  background-size: 80px 140px;
+}
+
+.hero-gradient {
+  position: absolute;
+  top: -30%;
+  right: -10%;
+  width: 70%;
+  height: 160%;
+  background: radial-gradient(ellipse, rgba(201,169,110,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-line-accent {
+  position: absolute;
+  top: 0;
+  left: 80px;
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(to bottom, transparent, rgba(201,169,110,0.2) 30%, rgba(201,169,110,0.2) 70%, transparent);
+}
+
+.hero-content {
+  position: relative;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 140px 40px 100px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  width: 100%;
+}
+
+.hero-left { position: relative; }
+
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 32px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards 0.3s;
+}
+
+.hero-tag-line {
+  width: 40px;
+  height: 1px;
+  background: var(--gold);
+}
+
+.hero-tag-text {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(40px, 5vw, 64px);
+  font-weight: 500;
+  line-height: 1.15;
+  color: var(--white);
+  margin-bottom: 28px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards 0.5s;
+}
+
+.hero h1 em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.hero-description {
+  font-size: 17px;
+  line-height: 1.75;
+  color: rgba(255,255,255,0.6);
+  max-width: 500px;
+  margin-bottom: 44px;
+  font-weight: 300;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards 0.7s;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards 0.9s;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--gold);
+  color: var(--navy);
+  padding: 16px 36px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.btn-primary:hover {
+  background: var(--gold-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(201,169,110,0.25);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: transparent;
+  color: var(--white);
+  padding: 16px 36px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.2);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.btn-secondary:hover {
+  border-color: rgba(255,255,255,0.5);
+  background: rgba(255,255,255,0.05);
+}
+
+/* Hero Right - Stats Grid */
+.hero-right {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards 1.1s;
+}
+
+.hero-stat {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  padding: 40px 30px;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-stat::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--gold);
+  transition: width 0.5s ease;
+}
+
+.hero-stat:hover::before { width: 100%; }
+
+.hero-stat:hover {
+  background: rgba(255,255,255,0.06);
+  transform: translateY(-3px);
+}
+
+.hero-stat-number {
+  font-family: 'Playfair Display', serif;
+  font-size: 42px;
+  font-weight: 500;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+
+.hero-stat-label {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.5;
+}
+
+/* ═══════════════ MARQUEE STRIP ═══════════════ */
+.marquee-strip {
+  background: var(--gold);
+  padding: 14px 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.marquee-track {
+  display: flex;
+  animation: marquee 30s linear infinite;
+  width: max-content;
+}
+
+.marquee-item {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  padding: 0 32px;
+  white-space: nowrap;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--navy);
+}
+
+.marquee-dot {
+  width: 5px;
+  height: 5px;
+  background: var(--navy);
+  border-radius: 50%;
+  opacity: 0.4;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ═══════════════ ABOUT ═══════════════ */
+.about {
+  padding: 140px 40px;
+  background: var(--white);
+  position: relative;
+}
+
+.about-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.section-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.section-tag-line {
+  width: 30px;
+  height: 1px;
+  background: var(--gold);
+}
+
+.section-tag-text {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(32px, 3.5vw, 48px);
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--navy);
+  margin-bottom: 28px;
+}
+
+.about-text {
+  font-size: 16px;
+  line-height: 1.85;
+  color: var(--gray-700);
+  font-weight: 300;
+  margin-bottom: 40px;
+}
+
+.about-features {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.about-feature {
+  padding: 28px;
+  background: var(--cream);
+  border-left: 2px solid var(--gold);
+  transition: all 0.3s ease;
+}
+
+.about-feature:hover {
+  transform: translateX(4px);
+}
+
+.about-feature-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 6px;
+  letter-spacing: 0.5px;
+}
+
+.about-feature-desc {
+  font-size: 13px;
+  color: var(--gray-500);
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+/* ═══════════════ SERVICES ═══════════════ */
+.services {
+  padding: 140px 40px;
+  background: var(--navy);
+  position: relative;
+  overflow: hidden;
+}
+
+.services::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  background: radial-gradient(ellipse at 80% 50%, rgba(201,169,110,0.04) 0%, transparent 70%);
+}
+
+.services-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.services-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.services-header .section-title { color: var(--white); }
+.services-header .section-subtitle {
+  font-size: 16px;
+  color: rgba(255,255,255,0.5);
+  max-width: 560px;
+  margin: 0 auto;
+  font-weight: 300;
+  line-height: 1.75;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+}
+
+.service-card {
+  padding: 48px 36px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.06);
+  transition: all 0.5s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.service-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s ease;
+}
+
+.service-card:hover::after { transform: scaleX(1); }
+
+.service-card:hover {
+  background: rgba(255,255,255,0.05);
+  transform: translateY(-4px);
+}
+
+.service-number {
+  font-family: 'Playfair Display', serif;
+  font-size: 48px;
+  font-weight: 400;
+  color: rgba(201,169,110,0.15);
+  margin-bottom: 20px;
+  line-height: 1;
+}
+
+.service-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 16px;
+  letter-spacing: 0.5px;
+}
+
+.service-desc {
+  font-size: 14px;
+  line-height: 1.75;
+  color: rgba(255,255,255,0.45);
+  font-weight: 300;
+}
+
+/* ═══════════════ PROCESS ═══════════════ */
+.process {
+  padding: 140px 40px;
+  background: var(--cream);
+  position: relative;
+}
+
+.process-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.process-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  position: relative;
+}
+
+.process-grid::before {
+  content: '';
+  position: absolute;
+  top: 60px;
+  left: 12.5%;
+  width: 75%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold), var(--gold), transparent);
+  opacity: 0.3;
+}
+
+.process-step {
+  text-align: center;
+  padding: 0 24px;
+  position: relative;
+}
+
+.process-step-number {
+  width: 48px;
+  height: 48px;
+  border: 2px solid var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  color: var(--gold);
+  margin: 0 auto 28px;
+  background: var(--cream);
+  position: relative;
+  z-index: 1;
+  transition: all 0.4s ease;
+}
+
+.process-step:hover .process-step-number {
+  background: var(--gold);
+  color: var(--navy);
+}
+
+.process-step-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 14px;
+  letter-spacing: 0.5px;
+}
+
+.process-step-desc {
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--gray-500);
+  font-weight: 400;
+}
+
+/* ═══════════════ RESULTS / CASE STUDIES ═══════════════ */
+.results {
+  padding: 140px 40px;
+  background: var(--white);
+}
+
+.results-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.results-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 64px;
+}
+
+.results-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.result-card {
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  padding: 44px 36px;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.result-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+
+.result-card:hover::before { transform: scaleX(1); }
+
+.result-card:hover {
+  border-color: var(--gold);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 60px rgba(0,31,63,0.08);
+}
+
+.result-tag {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+
+.result-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--navy);
+  margin-bottom: 14px;
+  line-height: 1.3;
+}
+
+.result-desc {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--gray-500);
+  margin-bottom: 24px;
+  font-weight: 300;
+}
+
+.result-metric {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding-top: 20px;
+  border-top: 1px solid var(--gray-200);
+}
+
+.result-metric-value {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  font-weight: 500;
+  color: var(--navy);
+}
+
+.result-metric-label {
+  font-size: 12px;
+  color: var(--gray-500);
+  font-weight: 400;
+}
+
+/* ═══════════════ DIFFERENTIATORS ═══════════════ */
+.diff {
+  padding: 140px 40px;
+  background: var(--navy);
+  position: relative;
+  overflow: hidden;
+}
+
+.diff-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.diff .section-title { color: var(--white); }
+
+.diff-text {
+  font-size: 16px;
+  line-height: 1.85;
+  color: rgba(255,255,255,0.55);
+  font-weight: 300;
+  margin-bottom: 40px;
+}
+
+.diff-list { display: flex; flex-direction: column; gap: 20px; }
+
+.diff-item {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  padding: 24px 28px;
+  background: rgba(255,255,255,0.03);
+  border-left: 2px solid rgba(201,169,110,0.3);
+  transition: all 0.3s ease;
+}
+
+.diff-item:hover {
+  background: rgba(255,255,255,0.06);
+  border-left-color: var(--gold);
+}
+
+.diff-item-icon {
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgba(201,169,110,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--gold);
+  font-size: 14px;
+}
+
+.diff-item-content h4 {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 4px;
+  letter-spacing: 0.3px;
+}
+
+.diff-item-content p {
+  font-size: 13px;
+  color: rgba(255,255,255,0.45);
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+/* ═══════════════ DELIVERABLES ═══════════════ */
+.deliverables {
+  padding: 100px 40px;
+  background: var(--cream);
+}
+
+.deliverables-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.deliverables-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 48px;
+}
+
+.deliverable-chip {
+  padding: 14px 28px;
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--navy);
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+}
+
+.deliverable-chip:hover {
+  border-color: var(--gold);
+  background: var(--gold-muted);
+  transform: translateY(-2px);
+}
+
+/* ═══════════════ CTA ═══════════════ */
+.cta {
+  padding: 140px 40px;
+  background: var(--white);
+  text-align: center;
+  position: relative;
+}
+
+.cta-inner {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.cta .section-title {
+  margin-bottom: 20px;
+}
+
+.cta-text {
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--gray-500);
+  margin-bottom: 48px;
+  font-weight: 300;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 48px;
+}
+
+.btn-primary-dark {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--navy);
+  color: var(--white);
+  padding: 18px 40px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.btn-primary-dark:hover {
+  background: var(--navy-light);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(0,31,63,0.2);
+}
+
+.cta-contact {
+  display: flex;
+  justify-content: center;
+  gap: 48px;
+  padding-top: 40px;
+  border-top: 1px solid var(--gray-200);
+}
+
+.cta-contact-item {
+  text-align: center;
+}
+
+.cta-contact-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gray-500);
+  margin-bottom: 6px;
+}
+
+.cta-contact-value {
+  font-size: 16px;
+  color: var(--navy);
+  font-weight: 500;
+}
+
+.cta-contact-value a {
+  color: var(--navy);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.cta-contact-value a:hover { color: var(--gold); }
+
+/* ═══════════════ FOOTER ═══════════════ */
+footer {
+  background: var(--navy-dark);
+  padding: 60px 40px 32px;
+}
+
+.footer-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 32px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.footer-logo-text {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: 3px;
+}
+
+.footer-tagline {
+  font-size: 12px;
+  color: rgba(255,255,255,0.35);
+  font-weight: 300;
+  font-style: italic;
+}
+
+.footer-bottom {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding-top: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-copy {
+  font-size: 12px;
+  color: rgba(255,255,255,0.3);
+  font-weight: 300;
+}
+
+.footer-links {
+  display: flex;
+  gap: 24px;
+}
+
+.footer-links a {
+  font-size: 12px;
+  color: rgba(255,255,255,0.35);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-links a:hover { color: var(--gold); }
+
+/* ═══════════════ ANIMATIONS ═══════════════ */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ═══════════════ RESPONSIVE ═══════════════ */
+@media (max-width: 1024px) {
+  .hero-content { grid-template-columns: 1fr; gap: 60px; }
+  .hero-right { max-width: 500px; }
+  .about-inner { grid-template-columns: 1fr; gap: 48px; }
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .process-grid { grid-template-columns: repeat(2, 1fr); gap: 40px; }
+  .process-grid::before { display: none; }
+  .results-cards { grid-template-columns: repeat(2, 1fr); }
+  .diff-inner { grid-template-columns: 1fr; gap: 48px; }
+}
+
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .hero-content { padding: 120px 24px 80px; }
+  .hero-right { grid-template-columns: 1fr 1fr; }
+  .hero-buttons { flex-direction: column; align-items: flex-start; }
+  .services { padding: 100px 24px; }
+  .services-grid { grid-template-columns: 1fr; }
+  .process { padding: 100px 24px; }
+  .process-grid { grid-template-columns: 1fr; }
+  .results { padding: 100px 24px; }
+  .results-cards { grid-template-columns: 1fr; }
+  .results-header { flex-direction: column; gap: 20px; align-items: flex-start; }
+  .diff { padding: 100px 24px; }
+  .about { padding: 100px 24px; }
+  .about-features { grid-template-columns: 1fr; }
+  .cta-buttons { flex-direction: column; }
+  .cta-contact { flex-direction: column; gap: 24px; }
+  .footer-inner { flex-direction: column; gap: 16px; text-align: center; }
+  .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ NAVIGATION ═══════════════ -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <svg class="nav-logo-icon" viewBox="0 0 40 40" fill="none">
+        <rect x="2" y="8" width="8" height="24" fill="none" stroke="white" stroke-width="1.5"/>
+        <rect x="14" y="8" width="8" height="24" fill="none" stroke="white" stroke-width="1.5"/>
+        <line x1="6" y1="15" x2="6" y2="26" stroke="rgba(201,169,110,0.6)" stroke-width="1.5"/>
+        <line x1="18" y1="12" x2="18" y2="20" stroke="rgba(201,169,110,0.6)" stroke-width="1.5"/>
+      </svg>
+      <span class="nav-logo-text">DMB</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#nosotros">Nosotros</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#proceso">Proceso</a></li>
+      <li><a href="#resultados">Resultados</a></li>
+      <li><a href="#contacto" class="nav-cta">Contacto</a></li>
+    </ul>
+    <div class="hamburger" onclick="this.classList.toggle('active')">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<section class="hero">
+  <div class="hero-bg-pattern"></div>
+  <div class="hero-gradient"></div>
+  <div class="hero-line-accent"></div>
+  <div class="hero-content">
+    <div class="hero-left">
+      <div class="hero-tag">
+        <span class="hero-tag-line"></span>
+        <span class="hero-tag-text">Consultoría Comercial Inmobiliaria</span>
+      </div>
+      <h1>Transformamos proyectos inmobiliarios en historias de <em>éxito comercial</em></h1>
+      <p class="hero-description">Maximizamos el valor comercial de tu proyecto, aceleramos la absorción y mejoramos tu rentabilidad con estrategia, datos y experiencia.</p>
+      <div class="hero-buttons">
+        <a href="#contacto" class="btn-primary">Agendar Diagnóstico</a>
+        <a href="#servicios" class="btn-secondary">Explorar Servicios</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-stat">
+        <div class="hero-stat-number">+50</div>
+        <div class="hero-stat-label">Proyectos<br>asesorados</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-number">$2B+</div>
+        <div class="hero-stat-label">MXN en valor<br>comercializado</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-number">130%</div>
+        <div class="hero-stat-label">Incremento en<br>absorción</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-number">+15</div>
+        <div class="hero-stat-label">Años de<br>experiencia</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ MARQUEE ═══════════════ -->
+<div class="marquee-strip">
+  <div class="marquee-track">
+    <div class="marquee-item">Pricing Inteligente <span class="marquee-dot"></span></div>
+    <div class="marquee-item">Estrategia Comercial <span class="marquee-dot"></span></div>
+    <div class="marquee-item">Análisis de Mercado <span class="marquee-dot"></span></div>
+    <div class="marquee-item">Proyección de Ventas <span class="marquee-dot"></span></div>
+    <div class="marquee-item">Optimización de Producto <span class="marquee-dot"></span></div>
+    <div class="marquee-item">Marketing Inmobiliario <span class="marquee-dot"></span></div>
+    <div class="marquee-item">Opinión de Valor <span class="marquee-dot"></span></div>
+    <div class="marquee-item">Evaluación Financiera <span class="marquee-dot"></span></div>
+    <!-- Duplicate for seamless loop -->
+    <div class="marquee-item">Pricing Inteligente <span class="marquee-dot"></span></div>
+    <div class="marquee-item">Estrategia Comercial <span class="marquee-dot"></span></div>
+    <div class="marquee-item">Análisis de Mercado <span class="marquee-dot"></span></div>
+    <div class="marquee-item">Proyección de Ventas <span class="marquee-dot"></span></div>
+    <div class="marquee-item">Optimización de Producto <span class="marquee-dot"></span></div>
+    <div class="marquee-item">Marketing Inmobiliario <span class="marquee-dot"></span></div>
+    <div class="marquee-item">Opinión de Valor <span class="marquee-dot"></span></div>
+    <div class="marquee-item">Evaluación Financiera <span class="marquee-dot"></span></div>
+  </div>
+</div>
+
+<!-- ═══════════════ ABOUT ═══════════════ -->
+<section class="about" id="nosotros">
+  <div class="about-inner">
+    <div class="about-left reveal">
+      <div class="section-tag">
+        <span class="section-tag-line"></span>
+        <span class="section-tag-text">Quiénes Somos</span>
+      </div>
+      <h2 class="section-title">Firma especializada en estrategia comercial para desarrolladores</h2>
+    </div>
+    <div class="about-right reveal">
+      <p class="about-text">DMB es una firma de consultoría comercial independiente para desarrolladores inmobiliarios. Combinamos análisis de mercado, estrategia, pricing, producto, marketing y ventas para transformar proyectos en resultados medibles. Operamos con experiencia en proyectos verticales, horizontales, oficinas y usos mixtos, con conocimiento profundo del mercado de Querétaro y el Bajío.</p>
+      <div class="about-features">
+        <div class="about-feature">
+          <div class="about-feature-title">Independencia</div>
+          <div class="about-feature-desc">Objetividad total, sin conflictos de interés</div>
+        </div>
+        <div class="about-feature">
+          <div class="about-feature-title">Datos aplicados</div>
+          <div class="about-feature-desc">Decisiones basadas en evidencia, no intuición</div>
+        </div>
+        <div class="about-feature">
+          <div class="about-feature-title">Visión ejecutiva</div>
+          <div class="about-feature-desc">Entendemos rentabilidad, flujo y riesgo</div>
+        </div>
+        <div class="about-feature">
+          <div class="about-feature-title">Ciclo completo</div>
+          <div class="about-feature-desc">Desde proyecto ejecutivo hasta operación comercial</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ SERVICES ═══════════════ -->
+<section class="services" id="servicios">
+  <div class="services-inner">
+    <div class="services-header reveal">
+      <div class="section-tag" style="justify-content:center;">
+        <span class="section-tag-line"></span>
+        <span class="section-tag-text">Servicios</span>
+        <span class="section-tag-line"></span>
+      </div>
+      <h2 class="section-title">Qué hacemos</h2>
+      <p class="section-subtitle services-header-sub" style="font-size:16px;color:rgba(255,255,255,0.5);max-width:560px;margin:0 auto;font-weight:300;line-height:1.75;">Consultoría comercial integral para cada etapa de tu proyecto inmobiliario.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-number">01</div>
+        <div class="service-title">Estrategia Comercial Integral</div>
+        <div class="service-desc">Lanzamiento, posicionamiento, tiempos de absorción y ruta comercial diseñada para maximizar el valor de tu proyecto desde el día uno.</div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-number">02</div>
+        <div class="service-title">Pricing Inteligente</div>
+        <div class="service-desc">Definición de precios, curvas de incremento y esquemas de pago basados en datos de mercado, competencia y atributos del producto.</div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-number">03</div>
+        <div class="service-title">Producto & Mix de Unidades</div>
+        <div class="service-desc">Optimización de prototipos y mezcla de producto alineada con la demanda real del mercado para acelerar la absorción.</div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-number">04</div>
+        <div class="service-title">Canales y Ventas</div>
+        <div class="service-desc">Estructuración de canales directos, alianzas con brokers, entrenamiento comercial y activación de red de inmobiliarias.</div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-number">05</div>
+        <div class="service-title">Marketing & Lanzamientos</div>
+        <div class="service-desc">Supervisión de campañas, evaluación de ROI publicitario y acompañamiento estratégico en lanzamientos de proyecto.</div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-number">06</div>
+        <div class="service-title">Opinión de Valor & Due Diligence</div>
+        <div class="service-desc">Análisis de adquisición de terrenos, evaluaciones financieras, revisión de modelos y estrategia de negociación para inversionistas.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ PROCESS ═══════════════ -->
+<section class="process" id="proceso">
+  <div class="process-inner">
+    <div class="process-header reveal">
+      <div class="section-tag" style="justify-content:center;">
+        <span class="section-tag-line"></span>
+        <span class="section-tag-text">Metodología</span>
+        <span class="section-tag-line"></span>
+      </div>
+      <h2 class="section-title">Cómo trabajamos</h2>
+    </div>
+    <div class="process-grid">
+      <div class="process-step reveal">
+        <div class="process-step-number">1</div>
+        <div class="process-step-title">Diagnóstico</div>
+        <div class="process-step-desc">Análisis de mercado, competencia, absorción, pricing actual vs. potencial y benchmarking de la zona.</div>
+      </div>
+      <div class="process-step reveal">
+        <div class="process-step-number">2</div>
+        <div class="process-step-title">Estrategia</div>
+        <div class="process-step-desc">Posicionamiento, mix final, curva de precios y plan comercial definidos para maximizar el valor.</div>
+      </div>
+      <div class="process-step reveal">
+        <div class="process-step-number">3</div>
+        <div class="process-step-title">Implementación</div>
+        <div class="process-step-desc">Acompañamiento de lanzamiento, entrenamiento comercial, activación de brokers y supervisión de marketing.</div>
+      </div>
+      <div class="process-step reveal">
+        <div class="process-step-number">4</div>
+        <div class="process-step-title">Monitoreo</div>
+        <div class="process-step-desc">Seguimiento semanal, tablero ejecutivo, ajustes dinámicos e informes estratégicos continuos.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ RESULTS ═══════════════ -->
+<section class="results" id="resultados">
+  <div class="results-inner">
+    <div class="results-header reveal">
+      <div>
+        <div class="section-tag">
+          <span class="section-tag-line"></span>
+          <span class="section-tag-text">Casos de Éxito</span>
+        </div>
+        <h2 class="section-title">Resultados que hablan</h2>
+      </div>
+    </div>
+    <div class="results-cards">
+      <div class="result-card reveal">
+        <div class="result-tag">Vivienda Vertical</div>
+        <div class="result-title">La Ceiba — Bosque Urbano</div>
+        <div class="result-desc">Estrategia de pricing para Torre 2 que generó ingresos adicionales significativos por optimización de precios de salida.</div>
+        <div class="result-metric">
+          <div class="result-metric-value">$15M</div>
+          <div class="result-metric-label">MXN en ingresos<br>adicionales</div>
+        </div>
+      </div>
+      <div class="result-card reveal">
+        <div class="result-tag">Vivienda Horizontal</div>
+        <div class="result-title">Cañadas del Valle</div>
+        <div class="result-desc">Incremento radical en la velocidad de ventas mediante diversas medidas estratégicas, incluyendo simulador dinámico de pagos.</div>
+        <div class="result-metric">
+          <div class="result-metric-value">+130%</div>
+          <div class="result-metric-label">Incremento en<br>absorción mensual</div>
+        </div>
+      </div>
+      <div class="result-card reveal">
+        <div class="result-tag">Desarrollo Mixto</div>
+        <div class="result-title">Terralta</div>
+        <div class="result-desc">Clasificación integral de precios, proyección, esquemas y estrategia de seguimiento que cumplió los objetivos de ventas.</div>
+        <div class="result-metric">
+          <div class="result-metric-value">100%</div>
+          <div class="result-metric-label">Objetivos de venta<br>cumplidos</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ DIFFERENTIATORS ═══════════════ -->
+<section class="diff">
+  <div class="diff-inner">
+    <div class="reveal">
+      <div class="section-tag">
+        <span class="section-tag-line"></span>
+        <span class="section-tag-text">Por qué DMB</span>
+      </div>
+      <h2 class="section-title">Nuestros diferenciadores</h2>
+      <p class="diff-text">No somos una agencia de ventas. Somos consultores estratégicos que entienden la rentabilidad, el flujo y el riesgo desde la perspectiva del desarrollador.</p>
+    </div>
+    <div class="diff-list reveal">
+      <div class="diff-item">
+        <div class="diff-item-icon">◆</div>
+        <div class="diff-item-content">
+          <h4>Acompañamiento ejecutivo</h4>
+          <p>Trato directo con dirección. Sin intermediarios.</p>
+        </div>
+      </div>
+      <div class="diff-item">
+        <div class="diff-item-icon">◆</div>
+        <div class="diff-item-content">
+          <h4>Inteligencia de datos local</h4>
+          <p>Decisiones basadas en evidencia del mercado real.</p>
+        </div>
+      </div>
+      <div class="diff-item">
+        <div class="diff-item-icon">◆</div>
+        <div class="diff-item-content">
+          <h4>Especialización inmobiliaria</h4>
+          <p>Conocemos al comprador, precios, absorción, competencia y tendencias.</p>
+        </div>
+      </div>
+      <div class="diff-item">
+        <div class="diff-item-icon">◆</div>
+        <div class="diff-item-content">
+          <h4>Visión del desarrollador</h4>
+          <p>Background en desarrollo, finanzas y marketing inmobiliario.</p>
+        </div>
+      </div>
+      <div class="diff-item">
+        <div class="diff-item-icon">◆</div>
+        <div class="diff-item-content">
+          <h4>Red de brokers & alianzas</h4>
+          <p>Acceso a canales de comercialización probados en la región.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ DELIVERABLES ═══════════════ -->
+<section class="deliverables">
+  <div class="deliverables-inner reveal">
+    <div class="section-tag" style="justify-content:center;">
+      <span class="section-tag-line"></span>
+      <span class="section-tag-text">Entregables</span>
+      <span class="section-tag-line"></span>
+    </div>
+    <h2 class="section-title">Lo que recibes</h2>
+    <div class="deliverables-grid">
+      <div class="deliverable-chip">Presentación estratégica</div>
+      <div class="deliverable-chip">Modelo de pricing</div>
+      <div class="deliverable-chip">Mix recomendado</div>
+      <div class="deliverable-chip">Proyección de ventas</div>
+      <div class="deliverable-chip">Tablero de KPIs</div>
+      <div class="deliverable-chip">Informe periódico</div>
+      <div class="deliverable-chip">Revisión de campañas & ROI</div>
+      <div class="deliverable-chip">Estrategia de brokers & canales</div>
+      <div class="deliverable-chip">Simulador financiero</div>
+      <div class="deliverable-chip">Opinión de valor</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ CTA ═══════════════ -->
+<section class="cta" id="contacto">
+  <div class="cta-inner reveal">
+    <div class="section-tag" style="justify-content:center;">
+      <span class="section-tag-line"></span>
+      <span class="section-tag-text">Siguiente Paso</span>
+      <span class="section-tag-line"></span>
+    </div>
+    <h2 class="section-title">Agenda una junta ejecutiva<br>de diagnóstico</h2>
+    <p class="cta-text">Analizamos tu pricing actual, absorción, mix de unidades, competencia y oportunidades inmediatas — sin compromiso.</p>
+    <div class="cta-buttons">
+      <a href="mailto:contacto@dmb.mx" class="btn-primary-dark">Contactar Ahora</a>
+      <a href="tel:+524421556155" class="btn-secondary" style="color:var(--navy);border-color:var(--gray-300);">442 155 6 155</a>
+    </div>
+    <div class="cta-contact">
+      <div class="cta-contact-item">
+        <div class="cta-contact-label">Email</div>
+        <div class="cta-contact-value"><a href="mailto:contacto@dmb.mx">contacto@dmb.mx</a></div>
+      </div>
+      <div class="cta-contact-item">
+        <div class="cta-contact-label">Teléfono</div>
+        <div class="cta-contact-value"><a href="tel:+524421556155">442 155 6 155</a></div>
+      </div>
+      <div class="cta-contact-item">
+        <div class="cta-contact-label">Web</div>
+        <div class="cta-contact-value"><a href="https://dmb.mx" target="_blank">dmb.mx</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <svg width="32" height="32" viewBox="0 0 40 40" fill="none">
+        <rect x="2" y="8" width="8" height="24" fill="none" stroke="white" stroke-width="1.5"/>
+        <rect x="14" y="8" width="8" height="24" fill="none" stroke="white" stroke-width="1.5"/>
+        <line x1="6" y1="15" x2="6" y2="26" stroke="rgba(201,169,110,0.6)" stroke-width="1.5"/>
+        <line x1="18" y1="12" x2="18" y2="20" stroke="rgba(201,169,110,0.6)" stroke-width="1.5"/>
+      </svg>
+      <span class="footer-logo-text">DMB</span>
+    </div>
+    <div class="footer-tagline">Transformamos proyectos inmobiliarios en historias de éxito comercial.</div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 DMB Consulting. Todos los derechos reservados.</div>
+    <div class="footer-links">
+      <a href="#">Querétaro, México</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Navbar scroll effect
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 50);
+});
+
+// Reveal on scroll
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => {
+        entry.target.classList.add('visible');
+      }, i * 80);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+reveals.forEach(el => observer.observe(el));
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+</script>
+
+</body>
+</html>
